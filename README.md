@@ -13,6 +13,7 @@ Một file `index.html` duy nhất, không cần cài gì, mở được offline
 | **Tra cứu** | 231 thuật ngữ, 12 nhóm. Gõ tiếng Trung, pinyin **không cần dấu**, hoặc tiếng Việt **không cần dấu** đều ra. |
 | **Thẻ nhớ** | Lật thẻ hai chiều 中→Việt / Việt→中. Đánh dấu "thuộc rồi", tiến độ tự lưu trong máy. |
 | **Kiểm tra** | Trắc nghiệm 12 câu, có chế độ *chỉ luyện từ bẫy*. Sai thì hiện luôn lời giải thích. |
+| **Luyện dịch** | *Câu ngắn*: 84 câu hiện trường, hai chiều 中→Việt / Việt→中, dịch ra miệng rồi lật đáp án. *Đoạn dài*: 6 đoạn giảng viên nói thật (lớp nền · tạo khối · mắt · chân mày · hỏi đáp về da hai chiều · makeup lên ảnh), có đồng hồ bấm giờ, bản dịch tham khảo và phân tích chỗ khó. |
 | **Mẫu câu** | 105 mẫu câu hiện trường, chia theo tình huống: chốt với giảng viên trước giờ học, khẩu lệnh thao tác, sửa lỗi, hỏi đáp hai chiều, câu cứu nguy khi bí. |
 | **20 từ bẫy** | Nhóm từ vừa hay gặp nhất vừa dễ dịch sai nhất — học nhóm này trước. |
 
