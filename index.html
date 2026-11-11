@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thuật ngữ Makeup Trung–Việt</title>
+<style>
+:root{
+  --bg:#FBF8F6; --card:#fff; --ink:#2A211E; --muted:#7D6E67; --line:#EBE1DB;
+  --accent:#AE4F49; --accent-soft:#FAEDEB; --warn:#B4530C; --warn-bg:#FDF4E9;
+  --good:#3C7558; --good-bg:#ECF4EF; --shadow:0 1px 2px rgba(42,33,30,.05),0 4px 14px rgba(42,33,30,.05);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  font-size:16px; line-height:1.5; padding-bottom:env(safe-area-inset-bottom);
+  -webkit-text-size-adjust:100%;
+}
+.zh{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,sans-serif}
+header{
+  position:sticky; top:0; z-index:20; background:rgba(251,248,246,.94);
+  backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid var(--line);
+  padding:calc(10px + env(safe-area-inset-top)) 14px 0;
+}
+.brand{display:flex;align-items:baseline;gap:9px;margin-bottom:9px}
+.brand h1{font-size:16px;margin:0;font-weight:700;letter-spacing:-.01em}
+.brand span{font-size:12px;color:var(--muted)}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -14px;padding:0 14px 9px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--muted);
+  padding:7px 13px;border-radius:999px;font-size:13.5px;font-weight:600;cursor:pointer;white-space:nowrap;
+  font-family:inherit;transition:.12s;
+}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+main{padding:14px 14px 56px;max-width:720px;margin:0 auto}
+.search{position:relative;margin-bottom:12px}
+.search input{
+  width:100%;padding:13px 40px 13px 15px;font-size:16px;font-family:inherit;color:var(--ink);
+  border:1px solid var(--line);border-radius:13px;background:var(--card);box-shadow:var(--shadow);outline:none;
+}
+.search input:focus{border-color:var(--accent)}
+.clearx{
+  position:absolute;right:7px;top:50%;transform:translateY(-50%);border:0;background:#EFE7E2;color:var(--muted);
+  width:26px;height:26px;border-radius:50%;font-size:16px;line-height:1;cursor:pointer;display:none;font-family:inherit;
+}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -14px 12px;padding:0 14px}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--muted);
+  padding:6px 11px;border-radius:999px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit;
+}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.warn.on{background:var(--warn);border-color:var(--warn)}
+.count{font-size:12.5px;color:var(--muted);margin:0 2px 9px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 13px;
+  margin-bottom:8px;box-shadow:var(--shadow);
+}
+.card.w{border-left:3px solid var(--warn);background:var(--warn-bg)}
+.row1{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.t-zh{font-size:21px;font-weight:600;letter-spacing:.01em}
+.t-py{font-size:12.5px;color:var(--muted);font-style:italic}
+.spk{
+  margin-left:auto;border:1px solid var(--line);background:var(--card);width:30px;height:30px;border-radius:9px;
+  cursor:pointer;font-size:14px;line-height:1;color:var(--muted);flex:0 0 auto;font-family:inherit;
+}
+.spk:active{background:var(--accent-soft)}
+.t-vi{font-size:16.5px;font-weight:650;color:var(--accent);margin-top:5px}
+.t-note{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
+.card.w .t-note{color:#8A4A17}
+.t-cat{font-size:11px;color:var(--muted);background:#F3EDE9;padding:2px 7px;border-radius:5px;display:inline-block;margin-top:7px}
+.card.w .t-cat{background:#F6E4D2;color:#8A4A17}
+.empty{text-align:center;color:var(--muted);padding:40px 10px;font-size:14.5px}
+.sect{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:18px 2px 8px}
+.sect:first-child{margin-top:2px}
+/* flashcards */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px;box-shadow:var(--shadow);margin-bottom:12px}
+.panel h3{margin:0 0 9px;font-size:13.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.seg{display:flex;gap:5px;flex-wrap:wrap}
+.seg button{
+  border:1px solid var(--line);background:var(--bg);color:var(--muted);padding:7px 12px;border-radius:9px;
+  font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;
+}
+.seg button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.flash{
+  background:var(--card);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);
+  min-height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:26px 20px;text-align:center;cursor:pointer;margin-bottom:11px;position:relative;
+}
+.flash .front{font-size:40px;font-weight:600;line-height:1.25}
+.flash .front.small{font-size:25px}
+.flash .back{margin-top:16px;padding-top:15px;border-top:1px solid var(--line);width:100%}
+.flash .back .v{font-size:21px;font-weight:650;color:var(--accent)}
+.flash .back .n{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.45}
+.flash .hint{position:absolute;bottom:11px;font-size:11.5px;color:#BCAEA7}
+.fbtns{display:flex;gap:8px}
+.fbtns button{
+  flex:1;padding:13px;border-radius:11px;border:1px solid var(--line);font-size:14.5px;font-weight:650;
+  cursor:pointer;background:var(--card);color:var(--ink);font-family:inherit;
+}
+.fbtns .no{color:var(--warn);border-color:#EDD6BE;background:var(--warn-bg)}
+.fbtns .yes{color:var(--good);border-color:#CFE2D7;background:var(--good-bg)}
+.prog{height:5px;background:#EFE7E2;border-radius:99px;overflow:hidden;margin-bottom:11px}
+.prog i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .25s}
+.meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:8px}
+/* quiz */
+.q{font-size:34px;font-weight:600;text-align:center;padding:22px 10px 6px}
+.q.small{font-size:22px}
+.qsub{text-align:center;font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{
+  text-align:left;padding:13px 14px;border-radius:11px;border:1px solid var(--line);background:var(--card);
+  font-size:15.5px;cursor:pointer;color:var(--ink);box-shadow:var(--shadow);font-family:inherit;line-height:1.4;
+}
+.opt.right{background:var(--good-bg);border-color:var(--good);color:var(--good);font-weight:650}
+.opt.wrong{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
+.opt:disabled{cursor:default;opacity:.75}
+.opt.right:disabled,.opt.wrong:disabled{opacity:1}
+.exp{margin-top:12px;padding:12px 13px;border-radius:11px;background:var(--accent-soft);font-size:13.5px;line-height:1.5;border-left:3px solid var(--accent)}
+.nextb{
+  width:100%;margin-top:11px;padding:14px;border-radius:11px;border:0;background:var(--ink);color:#fff;
+  font-size:15px;font-weight:650;cursor:pointer;font-family:inherit;
+}
+.score{text-align:center;padding:30px 10px}
+.score .big{font-size:46px;font-weight:700;color:var(--accent)}
+/* phrases */
+.p-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-bottom:8px;box-shadow:var(--shadow)}
+.p-zh{font-size:17px;line-height:1.45}
+.p-vi{font-size:15.5px;font-weight:650;color:var(--accent);margin-top:6px;line-height:1.45}
+.p-note{font-size:12.5px;color:var(--muted);margin-top:6px}
+.p-rev .p-vi{color:var(--ink);font-weight:500;font-size:15.5px}
+.p-rev .p-zh{color:var(--accent);font-weight:600}
+mark{background:#FAE3A8;color:inherit;padding:0 1px;border-radius:2px}
+.hide{display:none!important}
+.foot{text-align:center;font-size:11.5px;color:#BCAEA7;padding:22px 10px 6px;line-height:1.6}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><h1>Thuật ngữ Makeup</h1><span>Trung – Việt · 中越美妆</span></div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="look">Tra cứu</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="flash">Thẻ nhớ</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="quiz">Kiểm tra</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="phr">Mẫu câu</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="top">20 từ bẫy</button>
+  </div>
+</header>
+<main>
+  <section id="look">
+    <div class="search">
+      <input id="q" type="search" placeholder="Gõ tiếng Trung, pinyin hoặc tiếng Việt…" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button class="clearx" id="cx" aria-label="Xoá">×</button>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="count" id="count"></div>
+    <div id="res"></div>
+  </section>
+
+  <section id="flash" class="hide">
+    <div class="panel">
+      <h3>Chiều hỏi</h3>
+      <div class="seg" id="dir">
+        <button class="on" data-d="zh">中文 → Việt</button>
+        <button data-d="vi">Việt → 中文</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Nhóm từ</h3>
+      <div class="seg" id="fcat"></div>
+    </div>
+    <div class="meta"><span id="fmeta"></span><button id="freset" style="border:0;background:none;color:var(--accent);font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;padding:0">Học lại từ đầu</button></div>
+    <div class="prog"><i id="fprog" style="width:0%"></i></div>
+    <div class="flash" id="fcard"></div>
+    <div class="fbtns">
+      <button class="no" id="fno">Chưa thuộc</button>
+      <button class="yes" id="fyes">Thuộc rồi</button>
+    </div>
+  </section>
+
+  <section id="quiz" class="hide">
+    <div class="panel">
+      <h3>Luyện phần nào</h3>
+      <div class="seg" id="qmode">
+        <button class="on" data-m="all">Tất cả</button>
+        <button data-m="warn">Chỉ từ bẫy ⚠</button>
+      </div>
+    </div>
+    <div id="qbody"></div>
+  </section>
+
+  <section id="phr" class="hide">
+    <div class="search">
+      <input id="pq" type="search" placeholder="Tìm mẫu câu…" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button class="clearx" id="pcx" aria-label="Xoá">×</button>
+    </div>
+    <div class="chips" id="pchips"></div>
+    <div id="pres"></div>
+  </section>
+
+  <section id="top" class="hide">
+    <div class="count">20 từ vừa xuất hiện nhiều nhất, vừa dễ dịch sai nhất. Thuộc nhóm này trước.</div>
+    <div id="topres"></div>
+  </section>
+
+  <div class="foot">Soạn cho buổi dịch lớp trang điểm · tháng 12<br>Nghe không rõ thì hỏi lại — đừng bịa.</div>
+</main>
+<script>
+const D = {"terms":[{"i":0,"zh":"妆前乳 / 打底乳","py":"zhuāngqián rǔ","vi":"kem lót / primer","note":"Từ thông dụng nhất là “kem lót”. Học viên nghề cũng hiểu ngay “primer”.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":1,"zh":"隔离霜","py":"gélí shuāng","vi":"kem lót bảo vệ / kem lót chống nắng","note":"Tuyệt đối KHÔNG dịch “kem cách ly”. Tiếng Việt không có khái niệm riêng cho 隔离; hỏi lại cô là loại chống nắng hay loại hiệu chỉnh màu rồi dịch theo chức năng.","w":1,"c":"Lớp nền","cz":"底妆"},{"i":2,"zh":"防晒霜","py":"fángshài shuāng","vi":"kem chống nắng","note":"","w":0,"c":"Lớp nền","cz":"底妆"},{"i":3,"zh":"粉底液","py":"fěndǐ yè","vi":"kem nền / foundation (dạng lỏng)","note":"“Kem nền” là từ chuẩn; dân nghề cũng nói thẳng “foundation” hoặc “fou”.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":4,"zh":"粉底霜 / 粉底膏","py":"fěndǐ shuāng / gāo","vi":"kem nền dạng kem / dạng đặc","note":"","w":0,"c":"Lớp nền","cz":"底妆"},{"i":5,"zh":"气垫","py":"qìdiàn","vi":"cushion","note":"Đừng dịch “đệm hơi”. Cả Việt Nam đều gọi “cushion”.","w":1,"c":"Lớp nền","cz":"底妆"},{"i":6,"zh":"粉底刷","py":"fěndǐ shuā","vi":"cọ tán nền / cọ kem nền","note":"","w":0,"c":"Lớp nền","cz":"底妆"},{"i":7,"zh":"BB霜 / CC霜","py":"BB shuāng","vi":"BB cream / CC cream","note":"Giữ nguyên tiếng Anh.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":8,"zh":"遮瑕膏 / 遮瑕液","py":"zhēxiá gāo / yè","vi":"kem che khuyết điểm / concealer","note":"Dân nghề nói gọn “che khuyết điểm” (động từ lẫn danh từ) hoặc “concealer”.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":9,"zh":"遮瑕盘","py":"zhēxiá pán","vi":"bảng che khuyết điểm / palette concealer","note":"","w":0,"c":"Lớp nền","cz":"底妆"},{"i":10,"zh":"调色 / 校色产品","py":"tiáosè","vi":"kem hiệu chỉnh màu da / color corrector","note":"Loại xanh–tím–cam để trung hoà da đỏ, da vàng.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":11,"zh":"散粉 / 定妆粉","py":"sǎnfěn / dìngzhuāng fěn","vi":"phấn phủ dạng bột / phấn bột","note":"Phân biệt rõ với 粉饼. Nếu dịch cả hai thành “phấn phủ” học viên sẽ lấy sai sản phẩm.","w":1,"c":"Lớp nền","cz":"底妆"},{"i":12,"zh":"粉饼","py":"fěnbǐng","vi":"phấn nén","note":"","w":0,"c":"Lớp nền","cz":"底妆"},{"i":13,"zh":"蜜粉","py":"mìfěn","vi":"phấn bột mịn (loose powder)","note":"","w":0,"c":"Lớp nền","cz":"底妆"},{"i":14,"zh":"定妆喷雾","py":"dìngzhuāng pēnwù","vi":"xịt khoá nền / xịt khoá makeup / setting spray","note":"“Khoá nền” là cách nói rất thông dụng.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":15,"zh":"保湿喷雾","py":"bǎoshī pēnwù","vi":"xịt khoáng / xịt dưỡng ẩm","note":"","w":0,"c":"Lớp nền","cz":"底妆"},{"i":16,"zh":"色号","py":"sèhào","vi":"mã màu / số màu / tone màu","note":"“Chọn sai số màu”, “lệch tone”.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":17,"zh":"遮盖力 / 遮瑕力","py":"zhēgài lì","vi":"độ che phủ","note":"","w":0,"c":"Lớp nền","cz":"底妆"},{"i":18,"zh":"延展性","py":"yánzhǎn xìng","vi":"độ dàn / độ trải trên da","note":"Sản phẩm dễ tán rộng.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":19,"zh":"质地","py":"zhìdì","vi":"chất (sản phẩm) / texture","note":"“Chất kem mỏng nhẹ”, “chất phấn mịn”.","w":0,"c":"Lớp nền","cz":"底妆"},{"i":20,"zh":"修容","py":"xiūróng","vi":"tạo khối / đánh khối / contour","note":"Động từ: “tạo khối”. Sản phẩm: “phấn tạo khối / phấn khối”.","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":21,"zh":"修容粉 / 阴影粉","py":"xiūróng fěn","vi":"phấn tạo khối / phấn khối / contour","note":"","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":22,"zh":"阴影","py":"yīnyǐng","vi":"vùng tối / phần bóng / shadow","note":"Khi cô chỉ lên mặt: “chỗ này là vùng tối”.","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":23,"zh":"高光","py":"gāoguāng","vi":"highlight / phấn bắt sáng","note":"Cả hai cách đều được dùng rộng rãi.","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":24,"zh":"提亮","py":"tíliàng","vi":"làm sáng (vùng…) / bắt sáng vùng…","note":"Khác 高光. 高光 là sản phẩm/điểm sáng; 提亮 là hành động làm sáng một vùng (thường bằng concealer sáng hơn).","w":1,"c":"Tạo khối · Highlight","cz":"修容"},{"i":25,"zh":"腮红","py":"sāihóng","vi":"má hồng / phấn má / blush","note":"","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":26,"zh":"鼻影","py":"bíyǐng","vi":"tạo khối mũi / đánh bóng mũi","note":"Đừng dịch “bóng mũi” một mình — nghe như vệt bẩn. Nói “tạo khối cho mũi”.","w":1,"c":"Tạo khối · Highlight","cz":"修容"},{"i":27,"zh":"修眉 / 修容刷","py":"xiūróng shuā","vi":"cọ tạo khối","note":"","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":28,"zh":"古铜色粉 / bronzer","py":"gǔtóngsè fěn","vi":"bronzer / phấn tạo nắng","note":"Khác contour: bronzer ấm hơn, để da trông rám khoẻ.","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":29,"zh":"晒伤妆 / 日晒腮红","py":"shàishāng zhuāng","vi":"má hồng kiểu cháy nắng / sunburn blush","note":"","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":30,"zh":"立体感","py":"lìtǐ gǎn","vi":"độ nổi khối / chiều sâu / hiệu ứng 3D","note":"“Mặt có khối”, “gương mặt có chiều sâu”.","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":31,"zh":"打碎","py":"dǎsuì","vi":"làm tơi ra / phá vỡ đường ranh","note":"Nghĩa là đừng để vệt khối liền một đường; tán rời ra. Dịch “làm tơi, đừng để thành một vệt liền”.","w":1,"c":"Tạo khối · Highlight","cz":"修容"},{"i":32,"zh":"阻断","py":"zǔduàn","vi":"ngắt đường chuyển / cắt mạch","note":"Thường đi với 打碎: “cắt cho highlight và shadow không dính liền nhau”.","w":0,"c":"Tạo khối · Highlight","cz":"修容"},{"i":33,"zh":"眼影","py":"yǎnyǐng","vi":"phấn mắt / phấn mí / eyeshadow","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":34,"zh":"眼影盘","py":"yǎnyǐng pán","vi":"bảng phấn mắt / palette","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":35,"zh":"珠光 / 闪片","py":"zhūguāng / shǎnpiàn","vi":"nhũ / shimmer / glitter (kim tuyến)","note":"“Phấn nhũ”, “đánh nhũ lên mí”.","w":0,"c":"Mắt","cz":"眼妆"},{"i":36,"zh":"哑光 / 雾面","py":"yǎguāng / wùmiàn","vi":"matte / mịn lì / không nhũ","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":37,"zh":"眼线笔 / 眼线液 / 眼线膏","py":"yǎnxiàn bǐ / yè / gāo","vi":"chì kẻ mắt / kẻ mắt nước / gel kẻ mắt","note":"Gọi chung: eyeliner.","w":0,"c":"Mắt","cz":"眼妆"},{"i":38,"zh":"内眼线","py":"nèi yǎnxiàn","vi":"kẻ viền mi trong / kẻ sát chân mi","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":39,"zh":"眼尾上扬","py":"yǎnwěi shàngyáng","vi":"vuốt đuôi mắt lên / eyeliner mắt mèo","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":40,"zh":"睫毛膏","py":"jiémáo gāo","vi":"mascara","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":41,"zh":"睫毛夹","py":"jiémáo jiā","vi":"kẹp mi / bấm mi","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":42,"zh":"假睫毛","py":"jiǎ jiémáo","vi":"mi giả","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":43,"zh":"下睫毛","py":"xià jiémáo","vi":"mi dưới","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":44,"zh":"双眼皮贴","py":"shuāngyǎnpí tiē","vi":"dán mí / sticker kích mí","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":45,"zh":"眼窝","py":"yǎnwō","vi":"hốc mắt / bầu mắt","note":"Vùng lõm trên mí, nơi đánh phấn chuyển màu.","w":0,"c":"Mắt","cz":"眼妆"},{"i":46,"zh":"眼头 / 内眼角","py":"yǎntóu","vi":"đầu mắt / khoé mắt trong","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":47,"zh":"眼尾 / 外眼角","py":"yǎnwěi","vi":"đuôi mắt / khoé mắt ngoài","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":48,"zh":"上眼皮 / 下眼皮","py":"shàng/xià yǎnpí","vi":"mí trên / mí dưới","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":49,"zh":"双眼皮褶","py":"shuāngyǎnpí zhě","vi":"nếp mí","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":50,"zh":"单眼皮","py":"dān yǎnpí","vi":"mắt một mí","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":51,"zh":"内双","py":"nèishuāng","vi":"mí lót","note":"Tiếng Việt có từ riêng rất đúng: “mí lót”. Đây là từ ăn điểm — dùng đúng là học viên biết ngay bạn hiểu nghề.","w":1,"c":"Mắt","cz":"眼妆"},{"i":52,"zh":"肿眼泡","py":"zhǒng yǎnpào","vi":"mí mắt dày / mắt bị sưng mọng","note":"","w":0,"c":"Mắt","cz":"眼妆"},{"i":53,"zh":"卧蚕","py":"wòcán","vi":"bọng mắt dưới (kiểu Hàn) / aegyo sal","note":"Không có từ Việt gọn. Nói “bọng mắt dưới – kiểu Hàn hay vẽ” rồi chỉ vào vị trí, hoặc giữ “aegyo sal”.","w":1,"c":"Mắt","cz":"眼妆"},{"i":54,"zh":"眼距","py":"yǎnjù","vi":"khoảng cách hai mắt","note":"“Mắt gần nhau / xa nhau”.","w":0,"c":"Mắt","cz":"眼妆"},{"i":55,"zh":"眉笔","py":"méibǐ","vi":"chì kẻ mày","note":"Người Việt nói “chân mày” hoặc “lông mày” đều được; miền Nam quen “chân mày”.","w":0,"c":"Chân mày","cz":"眉妆"},{"i":56,"zh":"眉粉","py":"méifěn","vi":"phấn mày / bột kẻ mày","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":57,"zh":"染眉膏","py":"rǎnméi gāo","vi":"mascara chân mày","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":58,"zh":"眉头","py":"méitóu","vi":"đầu mày","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":59,"zh":"眉峰","py":"méifēng","vi":"đỉnh mày","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":60,"zh":"眉尾","py":"méiwěi","vi":"đuôi mày","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":61,"zh":"眉上缘 / 眉底","py":"méi shàngyuán / méidǐ","vi":"viền trên mày / viền dưới mày","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":62,"zh":"眉骨","py":"méigǔ","vi":"xương mày","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":63,"zh":"修眉 / 拔眉","py":"xiūméi / báméi","vi":"tỉa mày / nhổ mày / cạo mày","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":64,"zh":"野生眉","py":"yěshēng méi","vi":"chân mày tự nhiên / mày rậm tự nhiên","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":65,"zh":"螺旋刷","py":"luóxuán shuā","vi":"cọ chải mày (dạng xoắn) / spoolie","note":"","w":0,"c":"Chân mày","cz":"眉妆"},{"i":66,"zh":"毛流感","py":"máoliú gǎn","vi":"sợi mày rõ nét / thấy từng sợi tự nhiên","note":"Đừng dịch “cảm giác dòng lông”. Nói “vẽ sao cho thấy từng sợi mày”.","w":1,"c":"Chân mày","cz":"眉妆"},{"i":67,"zh":"骨相眉","py":"gǔxiàng méi","vi":"chân mày theo cấu trúc xương","note":"Vẽ mày dựa trên xương mày thật, không vẽ áp khuôn.","w":0,"c":"Chân mày","cz":"眉妆"},{"i":68,"zh":"口红","py":"kǒuhóng","vi":"son môi / son thỏi","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":69,"zh":"唇釉","py":"chúnyòu","vi":"son kem / son bóng dạng lỏng","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":70,"zh":"唇泥","py":"chúnní","vi":"son kem lì (lip mud)","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":71,"zh":"唇蜜 / 唇油","py":"chúnmì / chúnyóu","vi":"son bóng / dầu dưỡng môi","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":72,"zh":"唇线笔","py":"chúnxiàn bǐ","vi":"chì kẻ viền môi","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":73,"zh":"唇峰","py":"chúnfēng","vi":"đỉnh môi / cung môi (Cupid’s bow)","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":74,"zh":"唇角 / 嘴角","py":"chúnjiǎo / zuǐjiǎo","vi":"khoé môi","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":75,"zh":"咬唇妆","py":"yǎochún zhuāng","vi":"môi ombre / son ombre","note":"Đừng dịch “trang điểm cắn môi”. Tiếng Việt gọi “môi ombre”.","w":1,"c":"Môi","cz":"唇妆"},{"i":76,"zh":"唇部打底","py":"chúnbù dǎdǐ","vi":"che viền môi / lót môi trước khi đánh son","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":77,"zh":"唇纹","py":"chúnwén","vi":"vân môi / nếp môi","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":78,"zh":"唇部死皮","py":"chúnbù sǐpí","vi":"da chết ở môi","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":79,"zh":"唇色暗沉 / 唇色深","py":"chúnsè ànchén","vi":"môi thâm / môi xỉn màu","note":"","w":0,"c":"Môi","cz":"唇妆"},{"i":80,"zh":"美妆蛋 / 海绵蛋","py":"měizhuāng dàn","vi":"mút trang điểm / bông mút / beauty blender","note":"“Mút” là từ dùng nhiều nhất.","w":0,"c":"Dụng cụ","cz":"工具"},{"i":81,"zh":"粉扑","py":"fěnpū","vi":"bông phấn / puff","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":82,"zh":"散粉刷","py":"sǎnfěn shuā","vi":"cọ phấn phủ","note":"Cây to nhất trong bộ cọ.","w":0,"c":"Dụng cụ","cz":"工具"},{"i":83,"zh":"晕染刷","py":"yùnrǎn shuā","vi":"cọ tán / cọ blend","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":84,"zh":"斜角刷","py":"xiéjiǎo shuā","vi":"cọ vát / cọ đầu vát","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":85,"zh":"扁头刷","py":"biǎntóu shuā","vi":"cọ dẹt","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":86,"zh":"细节刷 / 小刷","py":"xìjié shuā","vi":"cọ chi tiết / cọ nhỏ","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":87,"zh":"眼线刷","py":"yǎnxiàn shuā","vi":"cọ kẻ mắt","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":88,"zh":"刷毛","py":"shuāmáo","vi":"lông cọ","note":"“Lông cọ mềm / tơi / xoè”.","w":0,"c":"Dụng cụ","cz":"工具"},{"i":89,"zh":"刷头","py":"shuātóu","vi":"đầu cọ","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":90,"zh":"羊毛刷 / 纤维刷","py":"yángmáo / xiānwéi shuā","vi":"cọ lông thú / cọ lông nhân tạo (tổng hợp)","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":91,"zh":"化妆棉","py":"huàzhuāng mián","vi":"bông tẩy trang / bông cotton","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":92,"zh":"棉签","py":"miánqiān","vi":"tăm bông","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":93,"zh":"修眉刀","py":"xiūméi dāo","vi":"dao cạo mày","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":94,"zh":"分装瓶","py":"fēnzhuāng píng","vi":"lọ chiết","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":95,"zh":"洗脸巾","py":"xǐliǎn jīn","vi":"khăn giấy rửa mặt (dùng một lần)","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":96,"zh":"刷具清洗剂","py":"shuājù qīngxǐ jì","vi":"dung dịch vệ sinh cọ","note":"","w":0,"c":"Dụng cụ","cz":"工具"},{"i":97,"zh":"面中","py":"miànzhōng","vi":"vùng giữa mặt / phần giữa mặt","note":"CỰC KỲ HAY GẶP. Chỉ vùng dưới mắt – mũi – quanh miệng. Khi cô nói 面中凹陷 là “vùng giữa mặt bị lõm/hõm”.","w":1,"c":"Vùng mặt","cz":"面部"},{"i":98,"zh":"三庭五眼","py":"sān tíng wǔ yǎn","vi":"tỉ lệ “tam đình ngũ nhãn” – ba phần ngang, năm chiều ngang mắt","note":"Phải giải thích, không được chỉ phiên âm. Nói: “mặt chia ba phần bằng nhau theo chiều dọc, chiều ngang bằng năm lần bề ngang mắt”.","w":1,"c":"Vùng mặt","cz":"面部"},{"i":99,"zh":"上庭 / 中庭 / 下庭","py":"shàng/zhōng/xià tíng","vi":"phần trên / phần giữa / phần dưới của mặt","note":"Trên = chân tóc→mày; giữa = mày→đáy mũi; dưới = đáy mũi→cằm.","w":0,"c":"Vùng mặt","cz":"面部"},{"i":100,"zh":"苹果肌","py":"píngguǒ jī","vi":"má táo / phần cao của gò má","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":101,"zh":"颧骨","py":"quángǔ","vi":"xương gò má","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":102,"zh":"颧弓","py":"quángōng","vi":"cung gò má (phần nhô ngang về phía tai)","note":"Khác 颧骨. Nếu bí, nói “phần xương nhô ngang ở má, gần tai”.","w":1,"c":"Vùng mặt","cz":"面部"},{"i":103,"zh":"太阳穴","py":"tàiyángxué","vi":"thái dương","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":104,"zh":"下颚角 / 下颌线","py":"xià'è jiǎo / xiàhé xiàn","vi":"góc hàm / đường viền hàm (jawline)","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":105,"zh":"山根","py":"shāngēn","vi":"gốc mũi (phần giữa hai mắt)","note":"KHÔNG phải cả sống mũi. 山根 là điểm thấp nhất giữa hai mắt. Dịch “gốc mũi”.","w":1,"c":"Vùng mặt","cz":"面部"},{"i":106,"zh":"鼻梁","py":"bíliáng","vi":"sống mũi","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":107,"zh":"鼻头 / 鼻尖","py":"bítóu / bíjiān","vi":"đầu mũi","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":108,"zh":"鼻翼","py":"bíyì","vi":"cánh mũi","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":109,"zh":"人中","py":"rénzhōng","vi":"nhân trung","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":110,"zh":"下巴 / 下颌","py":"xiàba","vi":"cằm","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":111,"zh":"发际线","py":"fàjì xiàn","vi":"chân tóc / đường chân tóc","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":112,"zh":"高颅顶","py":"gāo lúdǐng","vi":"đỉnh đầu cao (tạo phồng tóc cho cao)","note":"Thuộc phần tạo kiểu tóc, hay đi kèm makeup.","w":0,"c":"Vùng mặt","cz":"面部"},{"i":113,"zh":"法令纹","py":"fǎlìng wén","vi":"rãnh cười / nếp nhăn cánh mũi – miệng","note":"KHÔNG dịch “nếp nhăn pháp lệnh”. “Rãnh cười” là từ dân nghề dùng.","w":1,"c":"Vùng mặt","cz":"面部"},{"i":114,"zh":"泪沟","py":"lèigōu","vi":"rãnh lệ / hõm dưới mắt","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":115,"zh":"黑眼圈","py":"hēi yǎnquān","vi":"quầng thâm (mắt)","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":116,"zh":"眼袋","py":"yǎndài","vi":"bọng mắt","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":117,"zh":"面部凹陷","py":"miànbù āoxiàn","vi":"vùng hõm / vùng lõm trên mặt","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":118,"zh":"脸垮","py":"liǎn kuǎ","vi":"mặt bị xệ / chảy xệ","note":"Khẩu ngữ. “Mặt trông xệ xuống”.","w":0,"c":"Vùng mặt","cz":"面部"},{"i":119,"zh":"平整度","py":"píngzhěng dù","vi":"độ phẳng mịn của bề mặt da","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":120,"zh":"骨相","py":"gǔxiàng","vi":"cấu trúc xương (của gương mặt)","note":"Thuật ngữ nghề quan trọng. Nói “cấu trúc xương”, đối lập với 皮相.","w":1,"c":"Vùng mặt","cz":"面部"},{"i":121,"zh":"皮相","py":"píxiàng","vi":"nét bề mặt / phần da – mô mềm","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":122,"zh":"脸型","py":"liǎnxíng","vi":"dáng mặt / khuôn mặt","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":123,"zh":"鹅蛋脸","py":"é dàn liǎn","vi":"mặt trái xoan / mặt oval","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":124,"zh":"圆脸 / 方脸 / 长脸","py":"yuán / fāng / cháng liǎn","vi":"mặt tròn / mặt vuông / mặt dài","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":125,"zh":"心形脸 / 菱形脸","py":"xīnxíng / língxíng liǎn","vi":"mặt trái tim / mặt kim cương","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":126,"zh":"圆钝线条","py":"yuándùn xiàntiáo","vi":"đường nét tròn, mềm (không góc cạnh)","note":"","w":0,"c":"Vùng mặt","cz":"面部"},{"i":127,"zh":"干皮","py":"gānpí","vi":"da khô","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":128,"zh":"油皮","py":"yóupí","vi":"da dầu","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":129,"zh":"混干 / 混油","py":"hùngān / hùnyóu","vi":"da hỗn hợp thiên khô / thiên dầu","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":130,"zh":"外油内干","py":"wàiyóu nèigān","vi":"da dầu nhưng thiếu nước / da dầu mất nước","note":"Đừng dịch “ngoài dầu trong khô” — nghe lạ. Dân nghề Việt nói “da dầu mất nước”.","w":1,"c":"Loại da","cz":"肤质"},{"i":131,"zh":"敏感肌","py":"mǐngǎn jī","vi":"da nhạy cảm","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":132,"zh":"毛孔粗大","py":"máokǒng cūdà","vi":"lỗ chân lông to","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":133,"zh":"痘印 / 痘坑","py":"dòuyìn / dòukēng","vi":"thâm mụn / vết lõm do mụn","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":134,"zh":"闭口 / 封闭性痘痘","py":"bìkǒu","vi":"mụn ẩn","note":"“Mụn ẩn” là từ chuẩn tiếng Việt.","w":0,"c":"Loại da","cz":"肤质"},{"i":135,"zh":"色斑 / 黄褐斑","py":"sèbān / huánghèbān","vi":"nám / đốm nâu","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":136,"zh":"雀斑","py":"quèbān","vi":"tàn nhang","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":137,"zh":"泛红","py":"fànhóng","vi":"da đỏ / ửng đỏ","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":138,"zh":"暗沉","py":"ànchén","vi":"da xỉn màu / tối màu / thiếu sức sống","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":139,"zh":"角质 / 死皮","py":"jiǎozhì / sǐpí","vi":"tế bào chết / da chết","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":140,"zh":"出油","py":"chūyóu","vi":"tiết dầu / lên dầu / đổ dầu","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":141,"zh":"脱皮 / 起皮","py":"tuōpí / qǐpí","vi":"bong da / bong tróc","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":142,"zh":"沟壑 / 纹路","py":"gōuhè / wénlù","vi":"rãnh / nếp (trên da)","note":"Chỗ dễ đọng phấn.","w":0,"c":"Loại da","cz":"肤质"},{"i":143,"zh":"肤色不均","py":"fūsè bùjūn","vi":"da không đều màu","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":144,"zh":"肤色 / 底色","py":"fūsè / dǐsè","vi":"tone da / undertone","note":"Dân nghề Việt dùng thẳng “skintone” và “undertone”.","w":0,"c":"Loại da","cz":"肤质"},{"i":145,"zh":"冷白皮 / 黄一白 / 黑皮","py":"lěngbáipí","vi":"da trắng tông lạnh / da trắng ngả vàng / da ngăm","note":"","w":0,"c":"Loại da","cz":"肤质"},{"i":146,"zh":"服帖","py":"fútiē","vi":"bám da / ăn da / ăn vào da","note":"TỪ QUAN TRỌNG NHẤT của phần nền. “Lớp nền bám da”, “nền ăn da”. Đừng dịch “phục dán / phẳng phiu”.","w":1,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":147,"zh":"贴合度","py":"tiēhé dù","vi":"độ bám của lớp nền","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":148,"zh":"卡粉","py":"kǎfěn","vi":"nền bị đọng vào nếp / đọng vào lỗ chân lông","note":"Không có từ một tiếng. Dân nghề nói “bị đọng phấn”, “đọng ở rãnh cười”, “mốc ở rìa cánh mũi”.","w":1,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":149,"zh":"浮粉","py":"fúfěn","vi":"nền bị nổi lên, không ăn da","note":"Thường gặp ở da khô.","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":150,"zh":"斑驳","py":"bānbó","vi":"nền bị lốm đốm / loang không đều / vón từng vùng","note":"Thường gặp ở da dầu sau vài giờ.","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":151,"zh":"脱妆","py":"tuōzhuāng","vi":"trôi lớp nền / trôi makeup","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":152,"zh":"花妆","py":"huāzhuāng","vi":"lớp makeup bị loang, nhoè, nhoà nhoẹt","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":153,"zh":"晕妆","py":"yùnzhuāng","vi":"makeup bị nhoè (nhất là vùng mắt)","note":"Chú ý: 晕妆 (nhoè, xấu) khác hẳn 晕染 (tán, kỹ thuật tốt). Nghe lẫn là dịch ngược nghĩa.","w":1,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":154,"zh":"搓泥","py":"cuōní","vi":"sản phẩm bị vo cục / vón thành sợi","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":155,"zh":"假面感","py":"jiǎmiàn gǎn","vi":"trông như đeo mặt nạ / lớp nền giả","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":156,"zh":"粉感","py":"fěngǎn","vi":"cảm giác bột / thấy rõ lớp phấn trên da","note":"“Không bị cảm giác bột phấn”.","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":157,"zh":"通透","py":"tōngtòu","vi":"trong, thoáng, nhẹ (lớp nền)","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":158,"zh":"水光肌 / 水光感","py":"shuǐguāng jī","vi":"da căng bóng / da glow / da ẩm mượt","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":159,"zh":"奶油肌","py":"nǎiyóu jī","vi":"da mịn mượt như kem","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":160,"zh":"伪素颜","py":"wěi sùyán","vi":"makeup như không makeup / no-makeup makeup","note":"Xu hướng rất hot. Có thể nói “makeup mà trông như mặt mộc”.","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":161,"zh":"氛围感","py":"fēnwéi gǎn","vi":"có vibe / có thần thái / có không khí riêng","note":"Không có từ Việt tương ứng. Dân nghề trẻ nói thẳng “makeup có vibe”.","w":1,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":162,"zh":"显气色","py":"xiǎn qìsè","vi":"trông tươi tắn / có sức sống / hồng hào","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":163,"zh":"上镜","py":"shàngjìng","vi":"lên ảnh đẹp / ăn ảnh / lên camera đẹp","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":164,"zh":"显色度","py":"xiǎnsè dù","vi":"độ lên màu","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":165,"zh":"持妆 / 持久度","py":"chízhuāng","vi":"độ bền lớp makeup / lâu trôi","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":166,"zh":"成膜","py":"chéngmó","vi":"tạo màng trên da","note":"Chờ sản phẩm “set lại / tạo màng” rồi mới đánh lớp tiếp.","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":167,"zh":"妆效","py":"zhuāngxiào","vi":"hiệu ứng lớp makeup / finish","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":168,"zh":"断层","py":"duàncéng","vi":"bị đứt màu / lộ ranh giới màu","note":"“Màu bị đứt đoạn, không chuyển mượt”.","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":169,"zh":"显白","py":"xiǎnbái","vi":"tôn da / làm da trông sáng hơn","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":170,"zh":"显脏","py":"xiǎn zāng","vi":"trông bị xỉn / bẩn màu","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":171,"zh":"显老 / 显成熟","py":"xiǎnlǎo","vi":"trông già đi / trông chín chắn hơn tuổi","note":"","w":0,"c":"Hiệu ứng & lỗi","cz":"妆效"},{"i":172,"zh":"晕染","py":"yùnrǎn","vi":"tán / blend / tán nhoè ra","note":"ĐỘNG TỪ SỐ 1 trong lớp. Cô sẽ nói hàng trăm lần. “Tán” hoặc “blend” đều được, dân nghề quen “blend”.","w":1,"c":"Động từ kỹ thuật","cz":"手法"},{"i":173,"zh":"过渡","py":"guòdù","vi":"chuyển màu / chuyển tiếp","note":"“Làm cho màu chuyển tự nhiên”.","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":174,"zh":"衔接","py":"xiánjiē","vi":"nối liền / ăn khớp (giữa hai vùng)","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":175,"zh":"推开","py":"tuīkāi","vi":"tán rộng ra / đẩy ra","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":176,"zh":"拍打","py":"pāidǎ","vi":"vỗ nhẹ / dặm nhẹ","note":"“Vỗ cho ăn da” — không chà, không miết.","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":177,"zh":"按压","py":"ànyā","vi":"ấn / nhấn (bằng mút)","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":178,"zh":"轻扫","py":"qīngsǎo","vi":"quét nhẹ","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":179,"zh":"打圈","py":"dǎquān","vi":"xoay tròn / tán theo vòng tròn","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":180,"zh":"叠加","py":"diéjiā","vi":"đắp thêm lớp / layer thêm","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":181,"zh":"少量多次","py":"shǎoliàng duōcì","vi":"lấy ít, làm nhiều lần","note":"Câu cửa miệng của mọi lớp dạy nền. Dịch gọn đúng y như vậy.","w":1,"c":"Động từ kỹ thuật","cz":"手法"},{"i":182,"zh":"打底","py":"dǎdǐ","vi":"làm lớp lót / tạo lớp nền trước","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":183,"zh":"定妆","py":"dìngzhuāng","vi":"khoá nền / set lại lớp nền","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":184,"zh":"取粉","py":"qǔfěn","vi":"lấy phấn (lên cọ)","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":185,"zh":"匀一匀 / 抖一抖","py":"yún yi yún","vi":"gõ bớt phấn / dàn đều phấn trên cọ","note":"Khẩu ngữ. Dịch “gõ bớt phấn đi rồi hãy đưa lên mặt”.","w":1,"c":"Động từ kỹ thuật","cz":"手法"},{"i":186,"zh":"带一下","py":"dài yíxià","vi":"quét qua một chút / đi nhẹ một đường","note":"KHÔNG dịch “mang một chút”. Nghĩa là đưa cọ qua rất nhẹ.","w":1,"c":"Động từ kỹ thuật","cz":"手法"},{"i":187,"zh":"过一遍","py":"guò yí biàn","vi":"làm/quét qua một lượt","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":188,"zh":"收一下","py":"shōu yíxià","vi":"thu gọn lại / làm gọn viền lại","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":189,"zh":"虚一点","py":"xū yìdiǎn","vi":"làm mờ đi / nhạt đi / đừng để rõ viền","note":"“虚” ở đây là mờ – nhoè, không phải “trống rỗng”.","w":1,"c":"Động từ kỹ thuật","cz":"手法"},{"i":190,"zh":"实一点","py":"shí yìdiǎn","vi":"rõ nét hơn / đậm hơn / đặc hơn","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":191,"zh":"压一下","py":"yā yíxià","vi":"dằn lại / làm dịu màu lại","note":"Phủ một lớp mỏng lên để màu bớt gắt.","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":192,"zh":"提亮","py":"tíliàng","vi":"làm sáng vùng…","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":193,"zh":"卸妆","py":"xièzhuāng","vi":"tẩy trang","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":194,"zh":"补妆","py":"bǔzhuāng","vi":"dặm lại makeup","note":"","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":195,"zh":"试妆","py":"shìzhuāng","vi":"thử makeup trước (buổi thử)","note":"Với cô dâu: “buổi thử makeup”.","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":196,"zh":"跟妆","py":"gēnzhuāng","vi":"đi theo chỉnh makeup cả buổi","note":"新娘跟妆 = MUA đi theo cô dâu suốt ngày cưới.","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":197,"zh":"手法","py":"shǒufǎ","vi":"kỹ thuật tay / cách làm","note":"“Kỹ thuật tay của cô”.","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":198,"zh":"力度","py":"lìdù","vi":"lực tay / độ mạnh nhẹ","note":"“Nhẹ tay hơn”, “lực tay vừa phải”.","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":199,"zh":"角度","py":"jiǎodù","vi":"góc (đặt cọ)","note":"“Dựng cọ lên / để cọ nằm ngang”.","w":0,"c":"Động từ kỹ thuật","cz":"手法"},{"i":200,"zh":"冷色调 / 暖色调","py":"lěng / nuǎn sèdiào","vi":"tông lạnh / tông ấm","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":201,"zh":"色相","py":"sèxiàng","vi":"sắc màu (hue)","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":202,"zh":"明度","py":"míngdù","vi":"độ sáng (của màu)","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":203,"zh":"饱和度","py":"bǎohé dù","vi":"độ bão hoà","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":204,"zh":"低饱和","py":"dī bǎohé","vi":"độ bão hoà thấp / màu nhạt dịu","note":"Xu hướng Hàn: “low saturation”.","w":0,"c":"Màu sắc","cz":"色彩"},{"i":205,"zh":"大地色","py":"dàdì sè","vi":"tông đất / màu nâu đất","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":206,"zh":"奶茶色","py":"nǎichá sè","vi":"màu trà sữa","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":207,"zh":"豆沙色","py":"dòushā sè","vi":"màu hồng đất / hồng nâu","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":208,"zh":"脏橘色","py":"zāng jú sè","vi":"cam đất / cam trầm","note":"Đừng dịch “màu cam bẩn”. “Cam đất” mới đúng nghề.","w":1,"c":"Màu sắc","cz":"色彩"},{"i":209,"zh":"珊瑚色","py":"shānhú sè","vi":"màu coral / cam hồng","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":210,"zh":"正红","py":"zhèng hóng","vi":"đỏ thuần / đỏ tươi","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":211,"zh":"撞色","py":"zhuàngsè","vi":"phối màu đối lập / tương phản","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":212,"zh":"同色系","py":"tóng sèxì","vi":"cùng hệ màu / cùng tông","note":"","w":0,"c":"Màu sắc","cz":"色彩"},{"i":213,"zh":"日常妆 / 淡妆","py":"rìcháng / dàn zhuāng","vi":"makeup hàng ngày / makeup nhẹ","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":214,"zh":"浓妆","py":"nóng zhuāng","vi":"makeup đậm","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":215,"zh":"裸妆","py":"luǒ zhuāng","vi":"nude makeup / makeup tự nhiên","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":216,"zh":"新娘妆","py":"xīnniáng zhuāng","vi":"makeup cô dâu","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":217,"zh":"影楼妆 / 写真妆","py":"yǐnglóu zhuāng","vi":"makeup chụp ảnh studio","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":218,"zh":"影视妆","py":"yǐngshì zhuāng","vi":"makeup phim / điện ảnh","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":219,"zh":"舞台妆","py":"wǔtái zhuāng","vi":"makeup sân khấu","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":220,"zh":"晚宴妆","py":"wǎnyàn zhuāng","vi":"makeup dự tiệc / dạ hội","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":221,"zh":"韩系妆","py":"hán xì zhuāng","vi":"makeup kiểu Hàn","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":222,"zh":"欧美妆","py":"ōuměi zhuāng","vi":"makeup kiểu Âu Mỹ","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":223,"zh":"混血感妆容","py":"hùnxuè gǎn","vi":"makeup tạo nét lai (half-Asian look)","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":224,"zh":"漫画感妆容","py":"mànhuà gǎn","vi":"makeup kiểu truyện tranh / anime","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":225,"zh":"妆造","py":"zhuāngzào","vi":"makeup và tạo kiểu tổng thể","note":"Gồm cả mặt + tóc + phụ kiện. Dịch “makeup & tạo kiểu tổng thể”, đừng chỉ nói “makeup”.","w":1,"c":"Phong cách","cz":"风格"},{"i":226,"zh":"造型师","py":"zàoxíng shī","vi":"stylist / người tạo kiểu tổng thể","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":227,"zh":"化妆师","py":"huàzhuāng shī","vi":"chuyên viên trang điểm / MUA","note":"Dân nghề Việt gọi nhau là “MUA”.","w":0,"c":"Phong cách","cz":"风格"},{"i":228,"zh":"跟妆师","py":"gēnzhuāng shī","vi":"MUA đi theo (bridal MUA)","note":"","w":0,"c":"Phong cách","cz":"风格"},{"i":229,"zh":"模特","py":"mótè","vi":"người mẫu / mẫu (để thực hành)","note":"Trong lớp: “bạn mẫu”.","w":0,"c":"Phong cách","cz":"风格"},{"i":230,"zh":"客户 / 顾客","py":"kèhù","vi":"khách / khách hàng","note":"","w":0,"c":"Phong cách","cz":"风格"}],"top20":[{"zh":"服帖","vi":"bám da / ăn da","why":"Cả buổi dạy nền đều quay quanh từ này."},{"zh":"晕染","vi":"tán / blend","why":"Động từ xuất hiện nhiều nhất trong lớp."},{"zh":"面中","vi":"vùng giữa mặt","why":"Nghe quen tai ngay, nhưng dịch sai là học viên chỉ sai chỗ."},{"zh":"卡粉","vi":"đọng phấn vào nếp / rãnh","why":"Không có từ một tiếng — phải dịch bằng cả cụm."},{"zh":"浮粉","vi":"nền nổi lên, không ăn da","why":"Hay bị lẫn với 卡粉."},{"zh":"斑驳","vi":"nền loang lổ, không đều","why":"Chủ đề riêng của một buổi học."},{"zh":"少量多次","vi":"lấy ít, làm nhiều lần","why":"Câu cửa miệng."},{"zh":"带一下","vi":"quét qua nhẹ một đường","why":"Dịch chữ là sai hoàn toàn."},{"zh":"虚一点","vi":"làm mờ viền đi","why":"“虚” = mờ, không phải “rỗng”."},{"zh":"匀一匀","vi":"gõ bớt phấn trên cọ","why":"Khẩu ngữ, từ điển không có."},{"zh":"山根","vi":"gốc mũi (giữa hai mắt)","why":"Không phải cả sống mũi."},{"zh":"法令纹","vi":"rãnh cười","why":"Đừng nói “nếp nhăn pháp lệnh”."},{"zh":"内双","vi":"mí lót","why":"Tiếng Việt có từ riêng rất đúng."},{"zh":"提亮","vi":"làm sáng vùng…","why":"Khác 高光 (highlight)."},{"zh":"骨相","vi":"cấu trúc xương","why":"Từ khoá của lớp chuyên nghiệp."},{"zh":"气垫","vi":"cushion","why":"Giữ nguyên tiếng Anh."},{"zh":"隔离霜","vi":"kem lót bảo vệ / chống nắng","why":"Tiếng Việt không có khái niệm tương ứng."},{"zh":"晕妆","vi":"makeup bị nhoè","why":"Nghe gần giống 晕染 nhưng nghĩa trái ngược."},{"zh":"妆造","vi":"makeup & tạo kiểu tổng thể","why":"Rộng hơn “makeup”."},{"zh":"氛围感","vi":"có vibe / có thần thái","why":"Không dịch được bằng từ Hán-Việt."}],"phrases":[{"g":"Trước giờ học — chốt với cô","zh":"老师，我们先对一下今天的流程好吗？","vi":"Xin cô cho em rà lại quy trình buổi hôm nay một lượt.","note":"Làm trước giờ học 20–30 phút."},{"g":"Trước giờ học — chốt với cô","zh":"老师，今天会用到哪些产品？能给我看一下包装吗？","vi":"Hôm nay cô dùng những sản phẩm nào ạ? Cho em xem vỏ hộp với.","note":"Chụp ảnh vỏ hộp — tên thương hiệu khó nghe nhất."},{"g":"Trước giờ học — chốt với cô","zh":"示范的时候，请您每一两句停一下，我好翻。","vi":"(Thoả thuận với cô) Khi làm mẫu, cô nói một hai câu rồi dừng cho em dịch.","note":"Điều quan trọng nhất phải chốt trước."},{"g":"Trước giờ học — chốt với cô","zh":"我举手就是请您停一下。","vi":"Em giơ tay nghĩa là xin cô dừng một chút.","note":"Chốt một ám hiệu tay."},{"g":"Trước giờ học — chốt với cô","zh":"品牌名、数字、价格，请您说慢一点或写下来。","vi":"Tên thương hiệu, con số, giá — xin cô nói chậm hoặc viết ra.","note":"Đây là chỗ dịch sai nguy hiểm nhất."},{"g":"Trước giờ học — chốt với cô","zh":"如果我翻错了，请直接用中文告诉我。","vi":"Nếu em dịch sai, cô cứ nói thẳng bằng tiếng Trung cho em.","note":"Thà sửa tại chỗ còn hơn sai cả buổi."},{"g":"Trước giờ học — chốt với cô","zh":"理论部分我可以整段翻，示范部分我紧跟着翻。","vi":"Phần lý thuyết em dịch theo đoạn, phần làm mẫu em dịch bám sát từng câu.","note":"Hai chế độ khác nhau — nói rõ để cô biết nhịp."},{"g":"Trước giờ học — chốt với cô","zh":"学员都是行业内的，很多英文词他们懂。","vi":"Học viên đều đang làm nghề, nhiều từ tiếng Anh họ hiểu hết.","note":"Để cô yên tâm khi bạn giữ nguyên tiếng Anh."},{"g":"Mở đầu & tổ chức lớp","zh":"大家好，我是今天的翻译。","vi":"Chào cả lớp, em là phiên dịch của buổi học hôm nay ạ.","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"今天我们学习……","vi":"Hôm nay chúng ta sẽ học…","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"我先示范一遍，大家先看，不要动手。","vi":"Cô làm mẫu một lượt trước. Mọi người xem đã, chưa làm theo vội nhé.","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"现在请大家把工具准备好。","vi":"Bây giờ mọi người chuẩn bị dụng cụ ra nhé.","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"两人一组，互相化。","vi":"Chia hai người một nhóm, làm cho nhau nhé.","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"大家能看清吗？往前坐一点。","vi":"Mọi người nhìn rõ không ạ? Ngồi lên phía trên một chút nhé.","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"有问题随时举手。","vi":"Có thắc mắc gì thì giơ tay bất cứ lúc nào nhé.","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"大家可以拍照、录像。","vi":"Mọi người chụp ảnh, quay lại được nhé.","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"我们休息十分钟。","vi":"Mình nghỉ mười phút nhé.","note":""},{"g":"Mở đầu & tổ chức lớp","zh":"这段很重要，请把手机放一下。","vi":"Đoạn này quan trọng, mọi người cất điện thoại một chút ạ.","note":""},{"g":"Cô làm mẫu — giải thích","zh":"我现在用的是……","vi":"Cô đang dùng…","note":""},{"g":"Cô làm mẫu — giải thích","zh":"注意看我手的角度。","vi":"Chú ý góc tay của cô nhé.","note":""},{"g":"Cô làm mẫu — giải thích","zh":"这里刷子是立起来的。","vi":"Ở đây cọ phải dựng lên.","note":""},{"g":"Cô làm mẫu — giải thích","zh":"刷子要放平。","vi":"Cọ để nằm ngang.","note":""},{"g":"Cô làm mẫu — giải thích","zh":"大家看这个边缘，一定要虚掉。","vi":"Mọi người nhìn phần viền này — nhất định phải tán cho mờ đi.","note":"虚掉 = tán mờ, không để rõ ranh."},{"g":"Cô làm mẫu — giải thích","zh":"这一步的重点是……","vi":"Điểm quan trọng của bước này là…","note":""},{"g":"Cô làm mẫu — giải thích","zh":"这里千万不要……","vi":"Chỗ này tuyệt đối đừng…","note":""},{"g":"Cô làm mẫu — giải thích","zh":"为什么要这样做？因为……","vi":"Vì sao phải làm như vậy? Là vì…","note":""},{"g":"Cô làm mẫu — giải thích","zh":"我故意留了一点在这里。","vi":"Cô cố ý chừa lại một chút ở đây.","note":""},{"g":"Cô làm mẫu — giải thích","zh":"这是很多人常犯的错。","vi":"Đây là lỗi rất nhiều người hay mắc.","note":""},{"g":"Cô làm mẫu — giải thích","zh":"大块区域厚一点，转折处薄一点。","vi":"Vùng rộng ở giữa mặt thì dày hơn, chỗ gấp khúc thì mỏng đi.","note":"Câu kinh điển khi dạy nền."},{"g":"Cô làm mẫu — giải thích","zh":"脸的边际一定要薄。","vi":"Phần rìa mặt bắt buộc phải mỏng.","note":"Tránh lộ ranh với cổ."},{"g":"Cô làm mẫu — giải thích","zh":"先用珠光打底，再用哑光晕染。","vi":"Lót bằng màu nhũ trước, rồi tán màu matte lên.","note":""},{"g":"Cô làm mẫu — giải thích","zh":"高光和阴影要打碎、阻断。","vi":"Highlight và vùng tối phải tán tơi ra, cắt mạch, đừng để dính liền nhau.","note":"打碎 / 阻断 — xem sổ thuật ngữ."},{"g":"Cô làm mẫu — giải thích","zh":"眉色由深到浅：眉中最深，眉头最浅。","vi":"Màu chân mày đậm dần rồi nhạt: giữa mày đậm nhất, đầu mày nhạt nhất.","note":""},{"g":"Khẩu lệnh thao tác","zh":"少量多次。","vi":"Lấy ít thôi, làm nhiều lần.","note":""},{"g":"Khẩu lệnh thao tác","zh":"轻一点。／再轻一点。","vi":"Nhẹ tay hơn. / Nhẹ nữa.","note":""},{"g":"Khẩu lệnh thao tác","zh":"慢一点。","vi":"Chậm lại.","note":""},{"g":"Khẩu lệnh thao tác","zh":"力度再小一点。","vi":"Giảm lực tay xuống.","note":""},{"g":"Khẩu lệnh thao tác","zh":"从内往外。／从外往内。","vi":"Từ trong ra ngoài. / Từ ngoài vào trong.","note":""},{"g":"Khẩu lệnh thao tác","zh":"往上提。／往下带。","vi":"Hất lên trên. / Đưa nhẹ xuống dưới.","note":""},{"g":"Khẩu lệnh thao tác","zh":"再晕染一下。","vi":"Tán thêm chút nữa. / Blend thêm đi.","note":""},{"g":"Khẩu lệnh thao tác","zh":"边缘收干净。","vi":"Làm gọn phần viền lại.","note":""},{"g":"Khẩu lệnh thao tác","zh":"停，先别加了。","vi":"Dừng, đừng thêm nữa.","note":""},{"g":"Khẩu lệnh thao tác","zh":"换一支干净的刷子。","vi":"Đổi sang cọ sạch.","note":""},{"g":"Khẩu lệnh thao tác","zh":"把刷子上的粉抖一抖。","vi":"Gõ bớt phấn trên cọ đi.","note":""},{"g":"Khẩu lệnh thao tác","zh":"蘸一点点就够了。","vi":"Chấm một xíu là đủ.","note":""},{"g":"Khẩu lệnh thao tác","zh":"这里补一点。","vi":"Chỗ này dặm thêm chút.","note":""},{"g":"Khẩu lệnh thao tác","zh":"对，就是这样。","vi":"Đúng rồi, đúng kiểu đó.","note":""},{"g":"Khẩu lệnh thao tác","zh":"再来一遍。","vi":"Làm lại một lần nữa.","note":""},{"g":"Khẩu lệnh thao tác","zh":"两边要对称。","vi":"Hai bên phải cân nhau.","note":""},{"g":"Khẩu lệnh thao tác","zh":"先定妆，再上腮红。","vi":"Khoá nền xong rồi mới đánh má.","note":""},{"g":"Khẩu lệnh thao tác","zh":"等一下，让它成膜。","vi":"Chờ chút cho nó set lại đã.","note":""},{"g":"Khẩu lệnh thao tác","zh":"用美妆蛋按压，不要抹。","vi":"Dùng mút ấn xuống, đừng miết.","note":""},{"g":"Khẩu lệnh thao tác","zh":"拍，不要推。","vi":"Vỗ, đừng đẩy.","note":""},{"g":"Khẩu lệnh thao tác","zh":"照镜子看一下整体。","vi":"Soi gương nhìn tổng thể một cái.","note":""},{"g":"Khẩu lệnh thao tác","zh":"退远一点看。","vi":"Lùi ra xa nhìn thử.","note":""},{"g":"Khẩu lệnh thao tác","zh":"好，下一步。","vi":"Rồi, sang bước tiếp theo.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"你的粉底太厚了。","vi":"Lớp nền của em dày quá.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"这里颜色断层了。","vi":"Chỗ này màu bị đứt đoạn rồi.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"要过渡自然一点。","vi":"Phải tán cho màu chuyển tự nhiên hơn.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"边界太明显了。","vi":"Đường ranh rõ quá.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"你刷子拿得太靠前了。","vi":"Em cầm cọ sát đầu quá.","note":"Cầm sát đầu cọ thì không kiểm soát được lực."},{"g":"Sửa lỗi & nhắc nhở","zh":"两边不对称。","vi":"Hai bên không cân.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"这个位置偏高了／偏低了。","vi":"Vị trí này cao quá / thấp quá rồi.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"你下手太重了。","vi":"Em làm mạnh tay quá.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"顺序错了，要先……再……","vi":"Sai thứ tự rồi — phải … trước, rồi mới …","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"产品用多了，擦掉一点。","vi":"Lấy nhiều sản phẩm quá, lau bớt đi.","note":""},{"g":"Sửa lỗi & nhắc nhở","zh":"没关系，重来就好。","vi":"Không sao, làm lại là được.","note":"Giọng phải nhẹ — đây là câu trấn an."},{"g":"Sửa lỗi & nhắc nhở","zh":"别急，慢慢来。","vi":"Từ từ thôi, không vội.","note":""},{"g":"Nhận xét","zh":"整体不错，但是……","vi":"Tổng thể ổn đấy, nhưng…","note":""},{"g":"Nhận xét","zh":"比刚才进步很多。","vi":"Tiến bộ hơn lúc nãy nhiều.","note":""},{"g":"Nhận xét","zh":"这个眼影晕染得很漂亮。","vi":"Phần mắt em tán đẹp đấy.","note":""},{"g":"Nhận xét","zh":"底妆还要再练。","vi":"Phần nền cần luyện thêm.","note":""},{"g":"Nhận xét","zh":"很好，保持这个手法。","vi":"Tốt, giữ nguyên cách làm này.","note":""},{"g":"Nhận xét","zh":"你的手很稳。","vi":"Tay em vững đấy.","note":""},{"g":"Học viên hỏi → bạn dịch sang 中文","zh":"老师，油皮应该用哪一种？","vi":"Cô ơi, da dầu thì nên dùng loại nào ạ?","note":"","rev":1},{"g":"Học viên hỏi → bạn dịch sang 中文","zh":"法令纹那里卡粉怎么办？","vi":"Bị đọng phấn ở rãnh cười thì xử lý sao ạ?","note":"","rev":1},{"g":"Học viên hỏi → bạn dịch sang 中文","zh":"我是外油内干，怎么处理？","vi":"Da em bị mất nước mà vẫn đổ dầu thì sao ạ?","note":"","rev":1},{"g":"Học viên hỏi → bạn dịch sang 中文","zh":"这个产品在越南买得到吗？","vi":"Sản phẩm này ở Việt Nam mua được không ạ?","note":"","rev":1},{"g":"Học viên hỏi → bạn dịch sang 中文","zh":"老师，能再示范一遍吗？","vi":"Cô làm lại cho em xem lần nữa được không ạ?","note":"","rev":1},{"g":"Học viên hỏi → bạn dịch sang 中文","zh":"这一步可以省略吗？","vi":"Bước này bỏ qua được không ạ?","note":"","rev":1},{"g":"Học viên hỏi → bạn dịch sang 中文","zh":"深肤色的客人怎么选色号？","vi":"Khách da ngăm thì chọn số màu thế nào ạ?","note":"","rev":1},{"g":"Học viên hỏi → bạn dịch sang 中文","zh":"新娘妆有什么不一样？","vi":"Makeup cô dâu thì khác chỗ nào ạ?","note":"","rev":1},{"g":"Cô trả lời","zh":"这个问题很好。","vi":"Câu hỏi hay đấy.","note":""},{"g":"Cô trả lời","zh":"这要看个人肤质。","vi":"Cái này còn tuỳ loại da từng người.","note":""},{"g":"Cô trả lời","zh":"我再示范一遍。","vi":"Cô làm mẫu lại một lần nữa.","note":""},{"g":"Cô trả lời","zh":"这个我们下午讲。","vi":"Phần này chiều mình nói nhé.","note":""},{"g":"Cô trả lời","zh":"你可以用……代替。","vi":"Em có thể dùng … thay thế.","note":""},{"g":"Cô trả lời","zh":"不一定，要看场合。","vi":"Không nhất thiết, còn tuỳ dịp.","note":""},{"g":"Kết thúc buổi học","zh":"今天就到这里。","vi":"Hôm nay mình dừng ở đây nhé.","note":""},{"g":"Kết thúc buổi học","zh":"回去一定要练。","vi":"Về nhà nhớ luyện nhé.","note":""},{"g":"Kết thúc buổi học","zh":"明天我们学……","vi":"Ngày mai mình học…","note":""},{"g":"Kết thúc buổi học","zh":"谢谢大家，辛苦了。","vi":"Cảm ơn cả lớp, mọi người vất vả rồi.","note":"辛苦了 — đừng dịch “vất vả rồi” trơ trọi."},{"g":"Cứu nguy — nói với cô (中文)","zh":"老师，这个词我跟您确认一下，是指……吗？","vi":"","note":"Cách làm chuyên nghiệp, không phải mất mặt."},{"g":"Cứu nguy — nói với cô (中文)","zh":"老师，稍等一下，我先翻译。","vi":"","note":"Dùng khi cô nói quá dài."},{"g":"Cứu nguy — nói với cô (中文)","zh":"老师，可以说慢一点吗？学员要跟着做。","vi":"","note":""},{"g":"Cứu nguy — nói với cô (中文)","zh":"老师，这个牌子名请再说一遍，我写下来。","vi":"","note":""},{"g":"Cứu nguy — nói với cô (中文)","zh":"老师，刚才那句我没听清，麻烦再说一次。","vi":"","note":"Thà hỏi lại còn hơn đoán."},{"g":"Cứu nguy — nói với cô (中文)","zh":"老师，这里停一下，让他们先做完好吗？","vi":"","note":""},{"g":"Cứu nguy — nói với cô (中文)","zh":"老师，有学员问……","vi":"","note":"Mở đầu khi chuyển câu hỏi của học viên."},{"g":"Cứu nguy — nói với học viên","zh":"","vi":"Mọi người chờ em dịch xong rồi hãy làm nhé.","note":""},{"g":"Cứu nguy — nói với học viên","zh":"","vi":"Em xin phép xác nhận lại với cô một chút ạ.","note":"Nói rồi quay sang hỏi cô — lớp sẽ chờ."},{"g":"Cứu nguy — nói với học viên","zh":"","vi":"Từ này trong nghề mình hay gọi là gì ạ? Mọi người giúp em với.","note":"Vũ khí mạnh nhất: học viên biết tiếng Việt nghề hơn bạn."},{"g":"Cứu nguy — nói với học viên","zh":"","vi":"Em dịch lại cho rõ hơn ạ.","note":"Dùng khi bạn vừa dịch vụng."},{"g":"Cứu nguy — nói với học viên","zh":"","vi":"Ý cô là … — em diễn giải lại cho dễ hiểu ạ.","note":"Khi phải giải thích thay vì dịch sát."},{"g":"Cứu nguy — nói với học viên","zh":"","vi":"Bạn nói chậm giúp em để em dịch cho cô ạ.","note":""}],"cats":["Lớp nền","Tạo khối · Highlight","Mắt","Chân mày","Môi","Dụng cụ","Vùng mặt","Loại da","Hiệu ứng & lỗi","Động từ kỹ thuật","Màu sắc","Phong cách"]};
+const $ = s => document.querySelector(s);
+const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h !== undefined) e.innerHTML = h; return e; };
+const norm = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd').toLowerCase();
+const esc = s => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+D.terms.forEach(t => { t._s = norm(t.zh + ' ' + t.py + ' ' + t.vi + ' ' + t.note); });
+D.phrases.forEach(p => { p._s = norm(p.zh + ' ' + p.vi + ' ' + p.note); });
+
+function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || 'null'); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+
+function speak(txt) {
+  try {
+    if (!window.speechSynthesis) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(txt.replace(/[\/（）()]/g, ' '));
+    u.lang = 'zh-CN'; u.rate = .8;
+    const v = speechSynthesis.getVoices().find(x => /zh|Chinese/i.test(x.lang + x.name));
+    if (v) u.voice = v;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+try { speechSynthesis && speechSynthesis.getVoices(); } catch (e) {}
+
+/* ---------- tabs ---------- */
+const views = ['look', 'flash', 'quiz', 'phr', 'top'];
+document.querySelectorAll('.tab').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === b));
+  views.forEach(v => $('#' + v).classList.toggle('hide', v !== b.dataset.v));
+  window.scrollTo(0, 0);
+  if (b.dataset.v === 'flash') drawFlash();
+  if (b.dataset.v === 'quiz') nextQ();
+  try { location.hash = b.dataset.v; } catch (e) {}
+});
+
+/* ---------- lookup ---------- */
+let cat = 'Tất cả', onlyW = false;
+const chips = $('#chips');
+['Tất cả'].concat(D.cats).forEach(c => {
+  const b = el('button', 'chip' + (c === 'Tất cả' ? ' on' : ''), esc(c));
+  b.onclick = () => { cat = c; [...chips.children].forEach(x => x.classList.toggle('on', x === b || (x.classList.contains('warn') && onlyW))); draw(); };
+  chips.appendChild(b);
+});
+const wb = el('button', 'chip warn', '⚠ Chỉ từ bẫy');
+wb.onclick = () => { onlyW = !onlyW; wb.classList.toggle('on', onlyW); draw(); };
+chips.appendChild(wb);
+
+function hl(txt, q) {
+  if (!q) return esc(txt);
+  const n = norm(txt), nq = norm(q), i = n.indexOf(nq);
+  if (i < 0) return esc(txt);
+  return esc(txt.slice(0, i)) + '<mark>' + esc(txt.slice(i, i + q.length)) + '</mark>' + esc(txt.slice(i + q.length));
+}
+function termCard(t, q) {
+  const c = el('div', 'card' + (t.w ? ' w' : ''));
+  const r = el('div', 'row1');
+  r.appendChild(el('div', 't-zh zh', hl(t.zh, q)));
+  if (t.py) r.appendChild(el('div', 't-py', esc(t.py)));
+  const sp = el('button', 'spk', '🔊'); sp.onclick = e => { e.stopPropagation(); speak(t.zh); };
+  r.appendChild(sp);
+  c.appendChild(r);
+  c.appendChild(el('div', 't-vi', hl(t.vi, q)));
+  if (t.note) c.appendChild(el('div', 't-note', (t.w ? '⚠ ' : '') + hl(t.note, q)));
+  c.appendChild(el('span', 't-cat', esc(t.c) + ' · ' + esc(t.cz)));
+  return c;
+}
+function draw() {
+  const q = $('#q').value.trim(), nq = norm(q);
+  $('#cx').style.display = q ? 'block' : 'none';
+  let list = D.terms.filter(t => (cat === 'Tất cả' || t.c === cat) && (!onlyW || t.w) && (!nq || t._s.includes(nq)));
+  $('#count').textContent = list.length + ' từ';
+  const box = $('#res'); box.innerHTML = '';
+  if (!list.length) { box.appendChild(el('div', 'empty', 'Không tìm thấy từ này.<br>Thử gõ bằng tiếng Trung, pinyin không dấu, hoặc tiếng Việt.')); return; }
+  const f = document.createDocumentFragment();
+  list.slice(0, 400).forEach(t => f.appendChild(termCard(t, q)));
+  box.appendChild(f);
+}
+$('#q').oninput = draw;
+$('#cx').onclick = () => { $('#q').value = ''; draw(); $('#q').focus(); };
+draw();
+
+/* ---------- flashcards ---------- */
+let fdir = 'zh', fcat = 'Tất cả', fdeck = [], fi = 0, fshow = false;
+const fcatBox = $('#fcat');
+['Tất cả', '⚠ Từ bẫy'].concat(D.cats).forEach(c => {
+  const b = el('button', c === 'Tất cả' ? 'on' : '', esc(c));
+  b.onclick = () => { fcat = c; [...fcatBox.children].forEach(x => x.classList.toggle('on', x === b)); buildDeck(); };
+  fcatBox.appendChild(b);
+});
+$('#dir').querySelectorAll('button').forEach(b => b.onclick = () => {
+  fdir = b.dataset.d; $('#dir').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); drawFlash();
+});
+function known() { return store('mk_known') || {}; }
+function buildDeck() {
+  const k = known();
+  let pool = D.terms.filter(t => fcat === 'Tất cả' || (fcat === '⚠ Từ bẫy' ? t.w : t.c === fcat));
+  const left = pool.filter(t => !k[t.i]);
+  fdeck = (left.length ? left : pool).slice().sort(() => Math.random() - .5);
+  fi = 0; fshow = false; drawFlash();
+}
+function drawFlash() {
+  if (!fdeck.length) buildDeck();
+  const k = known();
+  const pool = D.terms.filter(t => fcat === 'Tất cả' || (fcat === '⚠ Từ bẫy' ? t.w : t.c === fcat));
+  const done = pool.filter(t => k[t.i]).length;
+  $('#fmeta').textContent = 'Thuộc ' + done + '/' + pool.length + ' · còn ' + Math.max(0, fdeck.length - fi) + ' thẻ';
+  $('#fprog').style.width = (pool.length ? done / pool.length * 100 : 0) + '%';
+  const c = $('#fcard'); c.innerHTML = '';
+  if (fi >= fdeck.length) {
+    c.appendChild(el('div', 'front small', '🎉 Xong vòng này'));
+    c.appendChild(el('div', 'hint', 'Bấm để bắt đầu vòng mới'));
+    c.onclick = buildDeck; return;
+  }
+  const t = fdeck[fi];
+  const frontTxt = fdir === 'zh' ? t.zh : t.vi;
+  c.appendChild(el('div', 'front' + (frontTxt.length > 8 ? ' small' : '') + (fdir === 'zh' ? ' zh' : ''), esc(frontTxt)));
+  if (fshow) {
+    const b = el('div', 'back');
+    b.appendChild(el('div', 'v' + (fdir === 'vi' ? ' zh' : ''), esc(fdir === 'zh' ? t.vi : t.zh) + (fdir === 'vi' && t.py ? ' <span style="font-size:13px;color:var(--muted);font-style:italic">' + esc(t.py) + '</span>' : '')));
+    if (t.note) b.appendChild(el('div', 'n', (t.w ? '⚠ ' : '') + esc(t.note)));
+    c.appendChild(b);
+    if (fdir === 'zh') { const s = el('button', 'spk', '🔊'); s.style.cssText = 'position:absolute;top:11px;right:11px;margin:0'; s.onclick = e => { e.stopPropagation(); speak(t.zh); }; c.appendChild(s); }
+  } else {
+    c.appendChild(el('div', 'hint', 'Bấm vào thẻ để xem đáp án'));
+  }
+  c.onclick = () => { fshow = !fshow; drawFlash(); };
+}
+$('#fyes').onclick = () => { const t = fdeck[fi]; if (!t) return; const k = known(); k[t.i] = 1; store('mk_known', k); fi++; fshow = false; drawFlash(); };
+$('#fno').onclick = () => { const t = fdeck[fi]; if (!t) return; const k = known(); delete k[t.i]; store('mk_known', k); fdeck.push(t); fi++; fshow = false; drawFlash(); };
+$('#freset').onclick = () => { store('mk_known', {}); buildDeck(); };
+buildDeck();
+
+/* ---------- quiz ---------- */
+let qmode = 'all', qcur = null, qn = 0, qok = 0;
+$('#qmode').querySelectorAll('button').forEach(b => b.onclick = () => {
+  qmode = b.dataset.m; $('#qmode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+  qn = 0; qok = 0; nextQ();
+});
+function pool() { return qmode === 'warn' ? D.terms.filter(t => t.w) : D.terms; }
+function nextQ() {
+  const p = pool();
+  if (qn >= 12) { showScore(); return; }
+  const t = p[Math.floor(Math.random() * p.length)];
+  let same = D.terms.filter(x => x.c === t.c && x.i !== t.i && x.vi !== t.vi);
+  if (same.length < 3) same = D.terms.filter(x => x.i !== t.i && x.vi !== t.vi);
+  const wrong = same.sort(() => Math.random() - .5).slice(0, 3);
+  qcur = { t, opts: [t].concat(wrong).sort(() => Math.random() - .5) };
+  const box = $('#qbody'); box.innerHTML = '';
+  box.appendChild(el('div', 'meta', '<span>Câu ' + (qn + 1) + '/12</span><span>Đúng ' + qok + '</span>'));
+  box.appendChild(el('div', 'q' + (t.zh.length > 6 ? ' small' : '') + ' zh', esc(t.zh)));
+  box.appendChild(el('div', 'qsub', esc(t.py || '') + ' · nghĩa tiếng Việt trong nghề là gì?'));
+  const o = el('div', 'opts');
+  qcur.opts.forEach(x => {
+    const b = el('button', 'opt', esc(x.vi));
+    b.onclick = () => answer(b, x, o);
+    o.appendChild(b);
+  });
+  box.appendChild(o);
+}
+function answer(btn, pick, box) {
+  const t = qcur.t;
+  [...box.children].forEach(b => { b.disabled = true; });
+  const right = pick.i === t.i;
+  if (right) { qok++; btn.classList.add('right'); }
+  else {
+    btn.classList.add('wrong');
+    [...box.children].forEach(b => { if (b.textContent === t.vi) b.classList.add('right'); });
+  }
+  qn++;
+  const e = el('div', 'exp', '<b>' + esc(t.zh) + '</b> → <b style="color:var(--accent)">' + esc(t.vi) + '</b>' + (t.note ? '<br>' + (t.w ? '⚠ ' : '') + esc(t.note) : ''));
+  $('#qbody').appendChild(e);
+  const nb = el('button', 'nextb', qn >= 12 ? 'Xem kết quả' : 'Câu tiếp →');
+  nb.onclick = nextQ;
+  $('#qbody').appendChild(nb);
+  nb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+function showScore() {
+  const box = $('#qbody'); box.innerHTML = '';
+  const s = el('div', 'score');
+  s.appendChild(el('div', 'big', qok + '/12'));
+  s.appendChild(el('div', '', qok >= 10 ? 'Chắc rồi — chuyển sang nhóm khác.' : qok >= 7 ? 'Ổn. Làm thêm một lượt nữa.' : 'Quay lại phần Thẻ nhớ trước đã.'));
+  box.appendChild(s);
+  const nb = el('button', 'nextb', 'Làm lại'); nb.onclick = () => { qn = 0; qok = 0; nextQ(); };
+  box.appendChild(nb);
+}
+
+/* ---------- phrases ---------- */
+let pg = 'Tất cả';
+const pgs = ['Tất cả'].concat([...new Set(D.phrases.map(p => p.g))]);
+const pchips = $('#pchips');
+pgs.forEach(g => {
+  const b = el('button', 'chip' + (g === 'Tất cả' ? ' on' : ''), esc(g));
+  b.onclick = () => { pg = g; [...pchips.children].forEach(x => x.classList.toggle('on', x === b)); drawP(); };
+  pchips.appendChild(b);
+});
+function drawP() {
+  const q = $('#pq').value.trim(), nq = norm(q);
+  $('#pcx').style.display = q ? 'block' : 'none';
+  const list = D.phrases.filter(p => (pg === 'Tất cả' || p.g === pg) && (!nq || p._s.includes(nq)));
+  const box = $('#pres'); box.innerHTML = '';
+  if (!list.length) { box.appendChild(el('div', 'empty', 'Không có mẫu câu khớp.')); return; }
+  let cur = '';
+  const f = document.createDocumentFragment();
+  list.forEach(p => {
+    if (p.g !== cur) { cur = p.g; f.appendChild(el('div', 'sect', esc(cur))); }
+    const c = el('div', 'p-card' + (p.rev ? ' p-rev' : ''));
+    if (p.rev) {
+      c.appendChild(el('div', 'p-vi', hl(p.vi, q)));
+      const r = el('div', 'row1'); r.appendChild(el('div', 'p-zh zh', hl(p.zh, q)));
+      const s = el('button', 'spk', '🔊'); s.onclick = () => speak(p.zh); r.appendChild(s);
+      c.appendChild(r);
+    } else {
+      if (p.zh) {
+        const r = el('div', 'row1'); r.appendChild(el('div', 'p-zh zh', hl(p.zh, q)));
+        const s = el('button', 'spk', '🔊'); s.onclick = () => speak(p.zh); r.appendChild(s);
+        c.appendChild(r);
+      }
+      if (p.vi) c.appendChild(el('div', 'p-vi', hl(p.vi, q)));
+    }
+    if (p.note) c.appendChild(el('div', 'p-note', esc(p.note)));
+    f.appendChild(c);
+  });
+  box.appendChild(f);
+}
+$('#pq').oninput = drawP;
+$('#pcx').onclick = () => { $('#pq').value = ''; drawP(); $('#pq').focus(); };
+drawP();
+
+/* ---------- top 20 ---------- */
+(function () {
+  const box = $('#topres');
+  D.top20.forEach(t => {
+    const c = el('div', 'card w');
+    const r = el('div', 'row1');
+    r.appendChild(el('div', 't-zh zh', esc(t.zh)));
+    const s = el('button', 'spk', '🔊'); s.onclick = () => speak(t.zh); r.appendChild(s);
+    c.appendChild(r);
+    c.appendChild(el('div', 't-vi', esc(t.vi)));
+    c.appendChild(el('div', 't-note', '⚠ ' + esc(t.why)));
+    box.appendChild(c);
+  });
+})();
+
+/* ---------- hash ---------- */
+(function () {
+  const h = (location.hash || '').replace('#', '');
+  if (views.includes(h)) { const b = document.querySelector('.tab[data-v="' + h + '"]'); if (b) b.click(); }
+})();
+</script>
+</body>
+</html>
