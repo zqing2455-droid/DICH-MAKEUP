@@ -63,11 +63,6 @@ main{padding:14px 14px 56px;max-width:720px;margin:0 auto}
 .row1{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
 .t-zh{font-size:21px;font-weight:600;letter-spacing:.01em}
 .t-py{font-size:12.5px;color:var(--muted);font-style:italic}
-.spk{
-  margin-left:auto;border:1px solid var(--line);background:var(--card);width:30px;height:30px;border-radius:9px;
-  cursor:pointer;font-size:14px;line-height:1;color:var(--muted);flex:0 0 auto;font-family:inherit;
-}
-.spk:active{background:var(--accent-soft)}
 .t-vi{font-size:16.5px;font-weight:650;color:var(--accent);margin-top:5px}
 .t-note{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
 .card.w .t-note{color:#8A4A17}
@@ -219,19 +214,6 @@ D.phrases.forEach(p => { p._s = norm(p.zh + ' ' + p.vi + ' ' + p.note); });
 
 function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || 'null'); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
 
-function speak(txt) {
-  try {
-    if (!window.speechSynthesis) return;
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(txt.replace(/[\/（）()]/g, ' '));
-    u.lang = 'zh-CN'; u.rate = .8;
-    const v = speechSynthesis.getVoices().find(x => /zh|Chinese/i.test(x.lang + x.name));
-    if (v) u.voice = v;
-    speechSynthesis.speak(u);
-  } catch (e) {}
-}
-try { speechSynthesis && speechSynthesis.getVoices(); } catch (e) {}
-
 /* ---------- tabs ---------- */
 const views = ['look', 'flash', 'quiz', 'phr', 'top'];
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => {
@@ -266,8 +248,6 @@ function termCard(t, q) {
   const r = el('div', 'row1');
   r.appendChild(el('div', 't-zh zh', hl(t.zh, q)));
   if (t.py) r.appendChild(el('div', 't-py', esc(t.py)));
-  const sp = el('button', 'spk', '🔊'); sp.onclick = e => { e.stopPropagation(); speak(t.zh); };
-  r.appendChild(sp);
   c.appendChild(r);
   c.appendChild(el('div', 't-vi', hl(t.vi, q)));
   if (t.note) c.appendChild(el('div', 't-note', (t.w ? '⚠ ' : '') + hl(t.note, q)));
@@ -329,7 +309,6 @@ function drawFlash() {
     b.appendChild(el('div', 'v' + (fdir === 'vi' ? ' zh' : ''), esc(fdir === 'zh' ? t.vi : t.zh) + (fdir === 'vi' && t.py ? ' <span style="font-size:13px;color:var(--muted);font-style:italic">' + esc(t.py) + '</span>' : '')));
     if (t.note) b.appendChild(el('div', 'n', (t.w ? '⚠ ' : '') + esc(t.note)));
     c.appendChild(b);
-    if (fdir === 'zh') { const s = el('button', 'spk', '🔊'); s.style.cssText = 'position:absolute;top:11px;right:11px;margin:0'; s.onclick = e => { e.stopPropagation(); speak(t.zh); }; c.appendChild(s); }
   } else {
     c.appendChild(el('div', 'hint', 'Bấm vào thẻ để xem đáp án'));
   }
@@ -416,15 +395,9 @@ function drawP() {
     const c = el('div', 'p-card' + (p.rev ? ' p-rev' : ''));
     if (p.rev) {
       c.appendChild(el('div', 'p-vi', hl(p.vi, q)));
-      const r = el('div', 'row1'); r.appendChild(el('div', 'p-zh zh', hl(p.zh, q)));
-      const s = el('button', 'spk', '🔊'); s.onclick = () => speak(p.zh); r.appendChild(s);
-      c.appendChild(r);
+      c.appendChild(el('div', 'p-zh zh', hl(p.zh, q)));
     } else {
-      if (p.zh) {
-        const r = el('div', 'row1'); r.appendChild(el('div', 'p-zh zh', hl(p.zh, q)));
-        const s = el('button', 'spk', '🔊'); s.onclick = () => speak(p.zh); r.appendChild(s);
-        c.appendChild(r);
-      }
+      if (p.zh) c.appendChild(el('div', 'p-zh zh', hl(p.zh, q)));
       if (p.vi) c.appendChild(el('div', 'p-vi', hl(p.vi, q)));
     }
     if (p.note) c.appendChild(el('div', 'p-note', esc(p.note)));
@@ -441,10 +414,7 @@ drawP();
   const box = $('#topres');
   D.top20.forEach(t => {
     const c = el('div', 'card w');
-    const r = el('div', 'row1');
-    r.appendChild(el('div', 't-zh zh', esc(t.zh)));
-    const s = el('button', 'spk', '🔊'); s.onclick = () => speak(t.zh); r.appendChild(s);
-    c.appendChild(r);
+    c.appendChild(el('div', 't-zh zh', esc(t.zh)));
     c.appendChild(el('div', 't-vi', esc(t.vi)));
     c.appendChild(el('div', 't-note', '⚠ ' + esc(t.why)));
     box.appendChild(c);

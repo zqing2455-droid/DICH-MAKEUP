@@ -16,8 +16,6 @@ Một file `index.html` duy nhất, không cần cài gì, mở được offline
 | **Mẫu câu** | 105 mẫu câu hiện trường, chia theo tình huống: chốt với giảng viên trước giờ học, khẩu lệnh thao tác, sửa lỗi, hỏi đáp hai chiều, câu cứu nguy khi bí. |
 | **20 từ bẫy** | Nhóm từ vừa hay gặp nhất vừa dễ dịch sai nhất — học nhóm này trước. |
 
-Mỗi từ tiếng Trung có nút 🔊 đọc thành tiếng (Web Speech API, giọng zh-CN).
-
 ## Nguyên tắc biên soạn
 
 Cột tiếng Việt ghi **cách dân trong nghề thực sự nói**, không phải bản dịch sát chữ. Học viên là người đang làm nghề: họ nói *kem lót*, *cushion*, *rãnh cười*, *mí lót* — không nói "kem cách ly", "đệm hơi", "nếp nhăn pháp lệnh".
