@@ -380,7 +380,6 @@ mark{background:var(--butter);color:inherit;padding:0 2px;border-radius:3px}
 <script src="du-lieu.js"></script>
 <script>
 /* dữ liệu nằm ở du-lieu.js (nạp ở thẻ <script> ngay trước) */
-
 const $ = s => document.querySelector(s);
 const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h !== undefined) e.innerHTML = h; return e; };
 const norm = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd').toLowerCase();
